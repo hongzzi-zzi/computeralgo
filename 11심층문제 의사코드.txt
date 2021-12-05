@@ -1,0 +1,43 @@
+// 이진탐색트리의 최대 및 최소 키
+Alg findMaxkey()
+    input Tree T
+    output max key k
+
+    1. v<-T.root()
+    2. while(T.isInternal(v))
+        v<-T.rightChild(v)
+    3. return key(T.parent(v))
+
+// findminkey는 이 반대
+
+// 이진탐색트리의 최대 및 최소 키 원소들
+Alg findMaxElements()
+    input Tree T
+    output elements of max key
+
+    1. v<-root()
+    2. while(isInternal(v))
+        v<-rightChild(v)
+    3. v<-parent(v)
+    4. k<-key(v)
+    5. L<-empty list
+    6. while(k=key(v))
+        L.addlast(element(v))
+        if(isRoot(v))   return
+        else    v<-parent(v)
+    7. return L.elements()
+
+Alg findMinElements()
+    input Tree T
+    output elements of max key
+
+    1. v<-root()
+    2. while(isInternal(v))
+        v<-leftChild(v)
+    3. v<-parent(v)
+    4. k<-key(v)
+    5. L<-empty list
+    6. while(isInternal(v))
+        L.addlast(element(v))
+        v<-treeSearch(rightChild(v),k)//중복된값이 오른쪽서브트리에있을가능성
+    7. return L.elements()
